@@ -1,64 +1,69 @@
 import streamlit as st
 import google.generativeai as genai
 import json
-import os
-from dotenv import load_dotenv
 
-# --- INITIAL SETUP ---
-load_dotenv()
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+# --- 1. CONFIGURATION ---
+# Using Streamlit's built-in secrets management for the API Key
+try:
+    api_key = st.secrets["GEMINI_API_KEY"]
+    genai.configure(api_key=api_key)
+except Exception as e:
+    st.error("API Key not found. Please add GEMINI_API_KEY to Streamlit Secrets.")
+    st.stop()
 
-# Load Dataset
-with open('college_data.json', 'r') as f:
-    college_data = json.load(f)
-    college_context = json.dumps(college_data, indent=2)
+# Load the local JSON dataset
+try:
+    with open('college_data.json', 'r') as f:
+        college_data = json.load(f)
+        college_context = json.dumps(college_data, indent=2)
+except FileNotFoundError:
+    st.error("Error: 'college_data.json' not found in the repository.")
+    st.stop()
 
-# System Instruction for the AI
+# Define AI Persona
 SYSTEM_PROMPT = f"""
-You are the Admissions Assistant for Echelon Institute of Technology (EIT), Faridabad.
-Answer questions based ONLY on this JSON data: {college_context}
-Tone: Minimalist, professional, and helpful. 
-If information is missing, refer them to {college_data['contact_info']['emails'][0]}.
+You are the official Admissions Assistant for Echelon Institute of Technology (EIT), Faridabad.
+Answer questions strictly based on this data: {college_context}
+If you don't know the answer, refer them to {college_data['contact_info']['emails'][0]}.
+Tone: Professional, helpful, and concise.
 """
 
 model = genai.GenerativeModel('gemini-1.5-flash', system_instruction=SYSTEM_PROMPT)
 
-# --- STREAMLIT UI SETUP (Minimalist Design) ---
-st.set_page_config(page_title="EIT Assistant", page_icon="🎓")
+# --- 2. MINIMALIST UI ---
+st.set_page_config(page_title="EIT Bot", page_icon="🎓")
 
-# Custom CSS for that flat, minimalist look you like
+# Custom Minimalist Styling
 st.markdown("""
     <style>
-    .stApp { background-color: #0e1117; color: #ffffff; }
-    .stChatMessage { border-radius: 10px; border: 1px solid #333; margin-bottom: 10px; }
-    .stTextInput input { background-color: #1e1e1e !important; color: white !important; border: 1px solid #444 !important; }
-    h1 { font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: -1px; }
+    .stApp { background-color: #0e1117; color: white; }
+    .stChatMessage { border: 1px solid #333; border-radius: 8px; }
     </style>
     """, unsafe_allow_html=True)
 
-st.title("EIT Admissions 🎓")
-st.caption("Echelon Institute of Technology - Faridabad")
+st.title("EIT Admissions Assistant 🎓")
+st.caption("Ask about courses, fees, or scholarships.")
 
-# Initialize Chat History
+# Chat History initialization
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Display Chat History
+# Display history
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# --- CHAT LOGIC ---
-if prompt := st.chat_input("Ask about fees, courses, or scholarships..."):
-    # User Message
+# User Input
+if prompt := st.chat_input("How can I help you today?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # Bot Message
+    # Generate Response
     with st.chat_message("assistant"):
-        response = model.generate_content(prompt)
-        full_response = response.text
-        st.markdown(full_response)
-    
-    st.session_state.messages.append({"role": "assistant", "content": full_response})
+        try:
+            response = model.generate_content(prompt)
+            st.markdown(response.text)
+            st.session_state.messages.append({"role": "assistant", "content": response.text})
+        except Exception as e:
+            st.error(f"AI Error: {e}")
