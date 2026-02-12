@@ -28,7 +28,7 @@ If you don't know the answer, refer them to {college_data['contact_info']['email
 Tone: Professional, helpful, and concise.
 """
 
-model = genai.GenerativeModel('gemini-2.5-flash', system_instruction=SYSTEM_PROMPT)
+model = genai.GenerativeModel('gemini-2.5-flash-lite', system_instruction=SYSTEM_PROMPT)
 
 # --- 2. MINIMALIST UI ---
 st.set_page_config(page_title="EIT Bot", page_icon="🎓")
@@ -67,4 +67,5 @@ if prompt := st.chat_input("How can I help you today?"):
             st.session_state.messages.append({"role": "assistant", "content": response.text})
         except Exception as e:
             st.error(f"AI Error: {e}")
+
 
