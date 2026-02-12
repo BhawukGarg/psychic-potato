@@ -1,0 +1,54 @@
+{
+  "college_name": "Echelon Institute of Technology (EIT)",
+  "contact_info": {
+    "admission_helpline": ["+91-9999753763", "+91-8802778922"],
+    "emails": ["admissions@eitfaridabad.co.in", "info@echeloninstitute.com"],
+    "address": "Kabulpur, Kheri-Manjhawali Road, Naharpar, Faridabad-121101, Delhi NCR"
+  },
+  "courses_and_fees_2025": {
+    "BTech": {
+      "duration_years": 4,
+      "total_tuition_fee": "₹3.70 Lakhs to ₹4.98 Lakhs",
+      "first_year_fee": "₹1,48,600",
+      "specialisations": ["CSE", "AIML", "Data Science", "Cyber Security", "IoT", "ME", "CE", "ECE", "Robotics & AI"],
+      "eligibility": "10+2 with 55% in PCM + JEE Main rank"
+    },
+    "BBA_BCA": {
+      "duration_years": 3,
+      "total_tuition_fee": "₹2.04 Lakhs to ₹2.34 Lakhs",
+      "eligibility": "10+2 with 45-50% aggregate + English"
+    },
+    "MBA_MCA": {
+      "duration_years": 2,
+      "total_tuition_fee": "₹1.45 Lakhs",
+      "exams_accepted": ["CAT", "CMAT", "MAT", "NIMCET", "IPU CET"]
+    },
+    "Hostel": {
+      "annual_fee": "₹82,000 to ₹1,00,000",
+      "amenities": ["AC/Non-AC", "24/7 Security", "Wi-Fi", "Mess & Cafeteria"]
+    }
+  },
+  "scholarship_slabs": {
+    "merit_based_12th": {
+      "95_plus_percent": "100% Scholarship",
+      "90_to_95_percent": "50% Scholarship",
+      "85_to_90_percent": "35% Scholarship",
+      "75_to_85_percent": "25% Scholarship"
+    },
+    "special_initiatives": {
+      "JEE_Reimbursement": "100% JEE Exam Fee Refund for all who attempt (No rank condition)",
+      "EWS_Scholarship": "Up to ₹25,000",
+      "Jain_Scholarship": "₹25,000 for Jain community students"
+    }
+  },
+  "placements_2024_25": {
+    "highest_package": "₹50.5 LPA",
+    "average_package": "₹5.3 LPA",
+    "placement_rate": "90%",
+    "top_recruiters": ["Amazon", "Google", "IBM", "Wipro", "TCS", "Samsung", "Deloitte"]
+  },
+  "campus_events": {
+    "Echiesta": "Annual Techno-Cultural Fest (Typically in March)",
+    "Ranbhumi": "Annual Sports Fest (Feb/March)"
+  }
+}
