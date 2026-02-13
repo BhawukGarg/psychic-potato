@@ -1,5 +1,6 @@
 {
   "college_name": "Echelon Institute of Technology (EIT)",
+  "affiliation": "Guru Gobind Singh Indraprastha University (GGSIPU / IPU)",
   "contact_info": {
     "admission_helpline": ["+91-9999753763", "+91-8802778922"],
     "emails": ["admissions@eitfaridabad.co.in", "info@echeloninstitute.com"],
@@ -11,12 +12,14 @@
       "total_tuition_fee": "₹3.70 Lakhs to ₹4.98 Lakhs",
       "first_year_fee": "₹1,48,600",
       "specialisations": ["CSE", "AIML", "Data Science", "Cyber Security", "IoT", "ME", "CE", "ECE", "Robotics & AI"],
-      "eligibility": "10+2 with 55% in PCM + JEE Main rank"
+      "eligibility": "10+2 with 55% in PCM + JEE Main rank (Admissions via IPU Counselling)",
+      "selection_criteria": "JEE Main (85% of seats) and IPU CET (remaining seats)"
     },
     "BBA_BCA": {
       "duration_years": 3,
       "total_tuition_fee": "₹2.04 Lakhs to ₹2.34 Lakhs",
-      "eligibility": "10+2 with 45-50% aggregate + English"
+      "eligibility": "10+2 with 45-50% aggregate + English",
+      "curriculum": "Based on GGSIPU Guidelines"
     },
     "MBA_MCA": {
       "duration_years": 2,
@@ -48,7 +51,8 @@
     "top_recruiters": ["Amazon", "Google", "IBM", "Wipro", "TCS", "Samsung", "Deloitte"]
   },
   "campus_events": {
-    "Echiesta": "Annual Techno-Cultural Fest (Typically in March)",
+    "EchelonX": "Flagship Annual Techno-Cultural Fest",
+    "Echiesta": "Techno-Cultural Fest (Typically in March)",
     "Ranbhumi": "Annual Sports Fest (Feb/March)"
   }
 }
